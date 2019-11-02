@@ -9,26 +9,25 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
-import io.reactivex.Completable;
 import io.reactivex.Flowable;
 import io.reactivex.Maybe;
 
 @Dao
-public interface UserDao {
+public interface UserDAO {
 
-    @Query("SELECT * FROM UserDB")
+    @Query("SELECT * FROM UserTable")
     Maybe<List<UserModel>> GetAll();
 
-    @Query("SELECT * FROM UserDB where first_name LIKE  :firstName AND last_name LIKE :lastName")
+    @Query("SELECT * FROM UserTable where first_name LIKE  :firstName AND last_name LIKE :lastName")
     UserModel findByName(String firstName, String lastName);
 
-    @Query("SELECT COUNT(*) from UserDB")
+    @Query("SELECT COUNT(*) from UserTable")
     int countUsers();
 
-    @Query("SELECT COUNT(*) FROM UserDB where mobile_number = :number")
+    @Query("SELECT COUNT(*) FROM UserTable where mobile_number = :number")
     Flowable<Integer> CheckNumber(long number);
 
-    @Query("SELECT * FROM UserDB where mobile_number = :number")
+    @Query("SELECT * FROM UserTable where mobile_number = :number")
     Flowable<UserModel> GetDetailsByNumber(long number);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)

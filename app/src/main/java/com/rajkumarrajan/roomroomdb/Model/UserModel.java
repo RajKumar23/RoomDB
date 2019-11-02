@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "UserDB")
+@Entity(tableName = "UserTable")
 public class UserModel {
 
     @PrimaryKey(autoGenerate = true)

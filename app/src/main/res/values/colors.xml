@@ -7,4 +7,6 @@
     <color name="colorSecondaryDark">#790e8b</color>
     <color name="colorSecondaryLight">#df78ef</color>
 
+    <color name="black">#000000</color>
+
 </resources>

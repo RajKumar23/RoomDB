@@ -6,18 +6,16 @@ import androidx.room.Room;
 
 public class MyRoomDBClient {
 
-    private Context mCtx;
     private static MyRoomDBClient mInstance;
 
     //our app database object
     private MyRoomDB myRoomDB;
 
     private MyRoomDBClient(Context mCtx) {
-        this.mCtx = mCtx;
 
         //creating the app database with Room database builder
         //MyToDos is the name of the database
-        myRoomDB = Room.databaseBuilder(mCtx, MyRoomDB.class, "UserDB")
+        myRoomDB = Room.databaseBuilder(mCtx, MyRoomDB.class, "Secret")
 //                .allowMainThreadQueries()
                 .build();
     }
