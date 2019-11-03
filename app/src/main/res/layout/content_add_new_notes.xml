@@ -35,26 +35,26 @@
         android:id="@+id/EditTextTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="3dp"
         android:background="@android:color/transparent"
         android:ems="10"
         android:gravity="top|start"
+        android:hint="User Name"
         android:inputType="textMultiLine"
         android:scrollbars="vertical"
-        android:hint="Title"
         app:layout_constraintEnd_toStartOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline1"
-        app:layout_constraintTop_toBottomOf="@+id/guideline3" />
+        app:layout_constraintTop_toBottomOf="@+id/TextViewTimeAndSize"
+        android:visibility="visible"/>
 
     <EditText
         android:id="@+id/EditTextDescription"
         android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_marginTop="20dp"
+        android:layout_height="0dp"
         android:layout_marginBottom="3dp"
         android:background="@android:color/transparent"
         android:ems="10"
         android:gravity="top|start"
+        android:hint="Password"
         android:inputType="textMultiLine"
         android:scrollbars="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -62,10 +62,4 @@
         app:layout_constraintStart_toStartOf="@+id/guideline1"
         app:layout_constraintTop_toBottomOf="@+id/EditTextTitle" />
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="20dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>

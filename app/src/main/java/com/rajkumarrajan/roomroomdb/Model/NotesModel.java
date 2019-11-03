@@ -28,8 +28,7 @@ public class NotesModel {
     public NotesModel() {
     }
 
-    public NotesModel(int noteID, int imageResource, String title, String description, String imageLink, String type) {
-        NoteID = noteID;
+    public NotesModel(int imageResource, String title, String description, String imageLink, String type) {
         ImageResource = imageResource;
         Title = title;
         Description = description;
