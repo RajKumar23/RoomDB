@@ -1,8 +1,13 @@
 package com.rajkumarrajan.roomroomdb.Model;
 
+import com.rajkumarrajan.roomroomdb.Room.DateConverter;
+
+import java.util.Date;
+
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
+import androidx.room.TypeConverters;
 
 @Entity(tableName = "NoteTable")
 public class NotesModel {
@@ -25,15 +30,20 @@ public class NotesModel {
     @ColumnInfo(name = "Type")
     private String Type;
 
+    @ColumnInfo(name = "SaveDate")
+    @TypeConverters({DateConverter.class})
+    private Date SaveDate;
+
     public NotesModel() {
     }
 
-    public NotesModel(int imageResource, String title, String description, String imageLink, String type) {
+    public NotesModel(int imageResource, String title, String description, String imageLink, String type, Date saveDate) {
         ImageResource = imageResource;
         Title = title;
         Description = description;
         ImageLink = imageLink;
         Type = type;
+        SaveDate = saveDate;
     }
 
     public int getNoteID() {
@@ -82,5 +92,13 @@ public class NotesModel {
 
     public void setType(String type) {
         Type = type;
+    }
+
+    public Date getSaveDate() {
+        return SaveDate;
+    }
+
+    public void setSaveDate(Date saveDate) {
+        SaveDate = saveDate;
     }
 }

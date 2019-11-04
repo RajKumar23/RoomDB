@@ -1,9 +1,26 @@
 package com.rajkumarrajan.roomroomdb.activity;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
+import com.rajkumarrajan.roomroomdb.Model.NotesModel;
+import com.rajkumarrajan.roomroomdb.R;
+import com.rajkumarrajan.roomroomdb.Room.MyRoomDBClient;
+import com.rajkumarrajan.roomroomdb.Util.Support;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+import java.util.Objects;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -15,26 +32,6 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Action;
 import io.reactivex.schedulers.Schedulers;
-
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.EditText;
-import android.widget.Spinner;
-import android.widget.TextView;
-
-import com.rajkumarrajan.roomroomdb.Model.NotesModel;
-import com.rajkumarrajan.roomroomdb.R;
-import com.rajkumarrajan.roomroomdb.Room.MyRoomDBClient;
-import com.rajkumarrajan.roomroomdb.Util.Support;
-
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Locale;
-import java.util.Objects;
 
 public class AddNewNotesActivity extends AppCompatActivity {
 
@@ -95,7 +92,7 @@ public class AddNewNotesActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if (charSequence.length() > 1){
+                if (charSequence.length() > 1) {
 
                 }
 
@@ -111,10 +108,10 @@ public class AddNewNotesActivity extends AppCompatActivity {
         SpinnerOperation.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (SpinnerOperation.getSelectedItem().toString().equals("Notes")){
+                if (SpinnerOperation.getSelectedItem().toString().equals("Notes")) {
                     EditTextTitle.setVisibility(View.GONE);
                     EditTextDescription.setHint("");
-                }else {
+                } else {
                     EditTextTitle.setVisibility(View.VISIBLE);
                     EditTextDescription.setHint("Message");
                 }
@@ -137,7 +134,7 @@ public class AddNewNotesActivity extends AppCompatActivity {
                                 .notesDAO().InsertAll(new NotesModel(R.drawable.ic_facebook,
                                 support.EditTextToString(EditTextTitle),
                                 support.EditTextToString(EditTextDescription), "",
-                                SpinnerOperation.getSelectedItem().toString()));
+                                SpinnerOperation.getSelectedItem().toString(), new Date()));
                     }
                 }).observeOn(AndroidSchedulers.mainThread())
                         .subscribeOn(Schedulers.io()).subscribe(new CompletableObserver() {
@@ -156,7 +153,8 @@ public class AddNewNotesActivity extends AppCompatActivity {
                     public void onError(Throwable e) {
                         support.DisplayToast("Sorry! Unable to create account");
                     }
-                });            }
+                });
+            }
         });
 
 
